@@ -25,7 +25,6 @@ public class Main {
         Menu menu = new Menu();
 
         Scanner scanner = new Scanner(System.in);
-        int id = 1;
 
         while (isRunning) {
 
@@ -61,8 +60,7 @@ public class Main {
                 System.out.println("Enter the company name:");
                 String companyName = scanner.nextLine();
                 companyName = scanner.nextLine();
-                dao.addCompany(id,companyName);
-                id++;
+                dao.addCompany(companyName);
                 System.out.println("The company was created!");
             }
         }

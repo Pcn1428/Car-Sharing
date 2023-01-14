@@ -31,7 +31,7 @@ public class CompanyDao {
                 Statement stmt = connection.createStatement();
         ) {
             String sql =  "CREATE TABLE IF NOT EXISTS COMPANY " +
-                    "(id INTEGER not NULL, " +
+                    "(id INTEGER NOT NULL AUTO_INCREMENT, " +
                     " name VARCHAR(255) NOT NULL UNIQUE, " +
                     " PRIMARY KEY ( id ))";
             stmt.executeUpdate(sql);
@@ -41,13 +41,13 @@ public class CompanyDao {
         }
     }
 
-    public void addCompany(int id, String companyName) {
+    public void addCompany(String companyName) {
         String insert = "INSERT INTO company (id, name) VALUES (?,?)";
         try (
                 Connection connection = this.factory.getConnection();
                 PreparedStatement stmt = connection.prepareStatement(insert);
         ) {
-            stmt.setInt(1, id);
+            stmt.setInt(1, 0);
             stmt.setString(2, companyName);
             stmt.executeUpdate();
         } catch (SQLException se) {
